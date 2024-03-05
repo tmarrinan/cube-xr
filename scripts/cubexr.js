@@ -3,6 +3,8 @@ import glsl from './glsl.js';
 import shaders from './shaders.js';
 import models from './models.js';
 
+const BASE_URL = new URL('./', document.baseURI).href;
+
 class CubeXR {
     constructor(canvas) {
         // Create WebGL2 rendering context
@@ -59,8 +61,8 @@ class CubeXR {
         this.model_matrix_plane = mat4.create();
 
         // Initialize textures
-        this.textures['crate'] = this.createTexture('../images/crate.jpg');
-        this.textures['grid'] = this.createTexture('../images/grid.png');
+        this.textures['crate'] = this.createTexture(BASE_URL + 'images/crate.jpg');
+        this.textures['grid'] = this.createTexture(BASE_URL + 'images/grid.png');
 
         // Create a model of a cube and plane
         this.plane_model = models.createPlane(this.gl, this.vertex_position_attrib, this.vertex_texcoord_attrib);
