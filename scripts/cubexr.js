@@ -237,6 +237,10 @@ class CubeXR {
         this.xr_mode = true;
         this.xr_session = session;
 
+        this.xr_session.addEventListener('end', (event) => {
+            this.endXRSession();
+        });
+
         // Set XR session's WebGL context to application WebGL2 context
         this.xr_session.updateRenderState({baseLayer: new XRWebGLLayer(this.xr_session, this.gl)});
         // Request our referance space (local => center of world where user head is at start of session)
@@ -251,7 +255,7 @@ class CubeXR {
 
     exitXR() {
         this.xr_session.end().then(() => {
-            this.endXRSession();
+            console.log('Manually exiting XR session');
         });
     }
 
