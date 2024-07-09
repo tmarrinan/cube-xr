@@ -5,12 +5,16 @@ let cube_app;
 function init() {
     if (navigator.xr) {
         navigator.xr.isSessionSupported("immersive-vr").then((is_supported) => {
+            console.log('WebXR Support:', is_supported);
             if (is_supported) {
                 let xr_btn = document.getElementById('xr-btn');
                 xr_btn.addEventListener('click', enterXR);
                 xr_btn.style.display = 'inline';
 
                 document.addEventListener('keydown', onKeyDown);
+            }
+            else {
+                alert('Warning: WebXR not supported');
             }
         });
     }
