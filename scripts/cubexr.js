@@ -9,7 +9,7 @@ class CubeXR {
     constructor(canvas) {
         // Create WebGL2 rendering context
         this.canvas = canvas;
-        this.gl = canvas.getContext('webgl2', {xrCompatible: true});
+        this.gl = canvas.getContext('webgl2', {antialias: false, xrCompatible: true});
         if (!this.gl) {
             alert('Error: WebGL2 not supported');
         }
